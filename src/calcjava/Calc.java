@@ -437,14 +437,14 @@ public class Calc extends javax.swing.JFrame {
 
     private void divActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
-        txtResultado.setText("");
         sinal = "/";
+        txtResultado.setText("");
     }//GEN-LAST:event_divActionPerformed
 
     private void multActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
-        txtResultado.setText("");
         sinal = "*";
+        txtResultado.setText("");
     }//GEN-LAST:event_multActionPerformed
 
     private void raizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raizActionPerformed
@@ -474,8 +474,8 @@ public class Calc extends javax.swing.JFrame {
 
     private void menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
-        txtResultado.setText("");
         sinal = "-";
+        txtResultado.setText("");
     }//GEN-LAST:event_menosActionPerformed
 
     private void oitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oitoActionPerformed
@@ -514,32 +514,33 @@ public class Calc extends javax.swing.JFrame {
             num1 = Double.parseDouble(txtResultado.getText());
             conta = sinal + " " + String.valueOf(num1);
             txtResultado.setText("");
-            
-            txtResultado.setText(conta + "\n = " +String.valueOf(Math.sqrt(num1)));
+            txtResultado.setText(conta + "\n = " + String.valueOf(Math.sqrt(num1)));
+
         } else {
             num2 = Double.parseDouble(txtResultado.getText());
-            conta = String.valueOf(num1) + " " + sinal + " "+ String.valueOf(num2);
+            conta = String.valueOf(num1) + " " + sinal + " " + String.valueOf(num2);
             txtResultado.setText("");
             switch (sinal) {
                 case "+":
-                    txtResultado.setText( conta + "\n = " +String.valueOf(num1 + num2));
+                    txtResultado.setText(conta + "\n = " + String.valueOf(num1 + num2));
                     break;
                 case "-":
-                    txtResultado.setText(String.valueOf(num1 - num2));
+                    txtResultado.setText(conta + "\n = " + String.valueOf(num1 - num2));
                     break;
                 case "*":
-                    txtResultado.setText(String.valueOf(num1 * num2));
+                    txtResultado.setText(conta + "\n = " + String.valueOf(num1 * num2));
                     break;
                 case "/":
-                    if (num2 == 0) {
-                        JOptionPane.showMessageDialog(null, "Tentativa de divisão por 0", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        txtResultado.setText(String.valueOf(num1 / num2));
-                    }
-                    break;
+                    try {
+                    int n1 = (int)Math.round(num1);
+                    int n2 = (int)Math.round(num2);
+                    txtResultado.setText(conta + "\n = " + String.valueOf(n1/n2));
+                } catch (ArithmeticException ex) {
+                    JOptionPane.showMessageDialog(null, "Tentativa de divisão por 0", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                break;
             }
         }
-
     }//GEN-LAST:event_igualActionPerformed
 
     private void doisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doisActionPerformed
