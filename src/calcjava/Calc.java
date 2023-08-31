@@ -433,18 +433,21 @@ public class Calc extends javax.swing.JFrame {
 
     private void clearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAllActionPerformed
         txtResultado.setText("");
+        aux = 0;
     }//GEN-LAST:event_clearAllActionPerformed
 
     private void divActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
         sinal = "/";
         txtResultado.setText("");
+        aux = 0;
     }//GEN-LAST:event_divActionPerformed
 
     private void multActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
         sinal = "*";
         txtResultado.setText("");
+        aux = 0;
     }//GEN-LAST:event_multActionPerformed
 
     private void raizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raizActionPerformed
@@ -469,43 +472,66 @@ public class Calc extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void noveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noveActionPerformed
-        txtResultado.setText(txtResultado.getText() + "9");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "9");
+            aux++;
+        }
     }//GEN-LAST:event_noveActionPerformed
 
     private void menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menosActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
         sinal = "-";
         txtResultado.setText("");
+        aux = 0;
     }//GEN-LAST:event_menosActionPerformed
 
     private void oitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oitoActionPerformed
-        txtResultado.setText(txtResultado.getText() + "8");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "8");
+            aux++;
+        }
     }//GEN-LAST:event_oitoActionPerformed
 
     private void seteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seteActionPerformed
-        txtResultado.setText(txtResultado.getText() + "7");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "7");
+            aux++;
+        }
     }//GEN-LAST:event_seteActionPerformed
 
     private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
-        txtResultado.setText(txtResultado.getText() + "6");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "6");
+            aux++;
+        }
     }//GEN-LAST:event_seisActionPerformed
 
     private void maisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maisActionPerformed
         num1 = Double.parseDouble(txtResultado.getText());
         sinal = "+";
         txtResultado.setText("");
+        aux = 0;
     }//GEN-LAST:event_maisActionPerformed
 
     private void cincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoActionPerformed
-        txtResultado.setText(txtResultado.getText() + "5");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "5");
+            aux++;
+        }
     }//GEN-LAST:event_cincoActionPerformed
 
     private void quatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quatroActionPerformed
-        txtResultado.setText(txtResultado.getText() + "4");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "4");
+            aux++;
+        }
     }//GEN-LAST:event_quatroActionPerformed
 
     private void tresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresActionPerformed
-        txtResultado.setText(txtResultado.getText() + "3");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "3");
+            aux++;
+        }
     }//GEN-LAST:event_tresActionPerformed
 
     private void igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualActionPerformed
@@ -515,6 +541,7 @@ public class Calc extends javax.swing.JFrame {
             conta = sinal + " " + String.valueOf(num1);
             txtResultado.setText("");
             txtResultado.setText(conta + "\n = " + String.valueOf(Math.sqrt(num1)));
+            aux = 0;
 
         } else {
             num2 = Double.parseDouble(txtResultado.getText());
@@ -531,32 +558,36 @@ public class Calc extends javax.swing.JFrame {
                     txtResultado.setText(conta + "\n = " + String.valueOf(num1 * num2));
                     break;
                 case "/":
-                    try {
-                    int n1 = (int)Math.round(num1);
-                    int n2 = (int)Math.round(num2);
-                    txtResultado.setText(conta + "\n = " + String.valueOf(n1/n2));
-                } catch (ArithmeticException ex) {
-                    JOptionPane.showMessageDialog(null, "Tentativa de divisão por 0", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                break;
+                    if (num2 == 0) {
+                        JOptionPane.showMessageDialog(null, "Tentativa de divisão por 0", "Error", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        txtResultado.setText(conta + "\n = " + String.valueOf(num1 / num2));
+                    }
+                    break;
             }
         }
     }//GEN-LAST:event_igualActionPerformed
 
     private void doisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doisActionPerformed
-        txtResultado.setText(txtResultado.getText() + "2");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "2");
+            aux++;
+        }
     }//GEN-LAST:event_doisActionPerformed
 
     private void umActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_umActionPerformed
-        txtResultado.setText(txtResultado.getText() + "1");
+        if (aux <= 11) {
+            txtResultado.setText(txtResultado.getText() + "1");
+            aux++;
+        }
     }//GEN-LAST:event_umActionPerformed
 
     private void deletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletActionPerformed
-
+        txtResultado.setText("");
     }//GEN-LAST:event_deletActionPerformed
 
     private void virgulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_virgulaActionPerformed
-
+        txtResultado.setText(txtResultado.getText() + ".");
     }//GEN-LAST:event_virgulaActionPerformed
 
     private void zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroActionPerformed
@@ -647,6 +678,7 @@ public class Calc extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     double num1;
     double num2;
+    int aux;
     String conta;
     String sinal;
 
